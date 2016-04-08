@@ -26,13 +26,14 @@ class GameBoard(game_mouse.Game):
         self.bugpos = random.randrange(12)
         self.spot = pygame.Rect(10,10,10,0)
         return
-        
-        
+            
     def game_logic(self, keys, newkeys, buttons, newbuttons, mouse_position):
         pass
     
     def paint(self, surface):
-        pass
+        drawWindow(surface, self.width, self.height, self.board)
+        
+        return
         
 def processClick(board, click_x, click_y, bug, bugpos, width, height,timer):
     pass
@@ -44,10 +45,20 @@ def drawTest(surface, spot):
 	pass
 
 def drawWindow(surface, width, height, board):
-    pass
+    clearBackground(surface, width, height)
+    
+    for x in range(4):
+    	for y in range(4):
+    		outline = pygame.Rect(x*(width/4), y*(height/4), (width/4), (height/4))
+    		pygame.draw.rect(surface, BUTTON_FILL_COLOR, outline, 0)
+    		pygame.draw.rect(surface, BUTTON_OUTLINE_COLOR, outline, 1)
+    return 
+    
 
 def clearBackground(surface, width, height):
-    pass
+    rect = pygame.Rect(0,0,width,height)
+    surface.fill(BACKGROUND_COLOR, rect)
+    return
 
 def main():
     pygame.font.init()
