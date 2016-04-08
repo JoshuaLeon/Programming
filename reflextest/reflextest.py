@@ -16,14 +16,14 @@ BUG_COLOR       		= (86,195,86)
 
 class GameBoard(game_mouse.Game):
     def __init__(self, width, height):
-        game_mouse.Game__init__(self, "REFLEX TESTER", width, height, 60)
+        game_mouse.Game.__init__(self, "REFLEX TESTER", width, height, 60)
                                                                              
-        self.board = [0,0,0,0,0,0,0,0,0,0,0,0]
+        self.board = [0,0,0,0,0,0,0,0,0,]
         self.timeclock = 0
         self.time = 0
         self.random_wait = random.randint(20,50)
         self.bug = False
-        self.bugpos = random.randrange(12)
+        self.bugpos = random.randrange(9)
         self.spot = pygame.Rect(10,10,10,0)
         return
             
@@ -32,6 +32,8 @@ class GameBoard(game_mouse.Game):
     
     def paint(self, surface):
         drawWindow(surface, self.width, self.height, self.board)
+        if self.bug:
+        	drawBug(surface, self.width, self.height, self.bugpos, self.board)
         
         return
         
@@ -47,9 +49,9 @@ def drawTest(surface, spot):
 def drawWindow(surface, width, height, board):
     clearBackground(surface, width, height)
     
-    for x in range(4):
-    	for y in range(4):
-    		outline = pygame.Rect(x*(width/4), y*(height/4), (width/4), (height/4))
+    for x in range(3):
+    	for y in range(3):
+    		outline = pygame.Rect(x*(width/3), y*(height/3), (width/3), (height/3))
     		pygame.draw.rect(surface, BUTTON_FILL_COLOR, outline, 0)
     		pygame.draw.rect(surface, BUTTON_OUTLINE_COLOR, outline, 1)
     return 
