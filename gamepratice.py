@@ -14,6 +14,7 @@ WHITE = (255, 255, 255)
 RED   = (255,   0,   0)
 GREEN = (  0, 255,   0)
 BLUE  = (  0,   0, 255)
+PURPLE= (160,  32, 240)
 RANDOM= (210, 254,  17)
 
 DISPLAYSURF.fill(RANDOM)
