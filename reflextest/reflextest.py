@@ -16,7 +16,17 @@ BUG_COLOR       		= (86,195,86)
 
 class GameBoard(game_mouse.Game):
     def __init__(self, width, height):
-        pass
+        game_mouse.Game__init__(self, "REFLEX TESTER", width, height, 60)
+                                                                             
+        self.board = [0,0,0,0,0,0,0,0,0,0,0,0]
+        self.timeclock = 0
+        self.time = 0
+        self.random_wait = random.randint(20,50)
+        self.bug = False
+        self.bugpos = random.randrange(12)
+        self.spot = pygame.Rect(10,10,10,0)
+        return
+        
         
     def game_logic(self, keys, newkeys, buttons, newbuttons, mouse_position):
         pass
@@ -40,7 +50,9 @@ def clearBackground(surface, width, height):
     pass
 
 def main():
-    pass
+    pygame.font.init()
+    game = GameBoard(600, 600)
+    game.main_loop
     
 if __name__ == "__main__":
     main()
