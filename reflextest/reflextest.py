@@ -21,7 +21,7 @@ class GameBoard(game_mouse.Game):
         self.timeclock = 0
         self.timer = 0
         self.random_wait = random.randint(20,50)
-        self.bug = True
+        self.bug = False
         self.bugpos = random.randrange(9)
         self.spot = pygame.Rect(10,10,0,0)
         return
@@ -52,6 +52,17 @@ class GameBoard(game_mouse.Game):
         
 def processClick(board, click_x, click_y, bug, bugpos, width, height,timer):
     print "ProcessClick", click_x, click_y, bug, bugpos, width, height
+    
+    if bug:
+    	spot = pygame.Rect((bugpos%3)*(width/3)+(width/6)-20,
+    	                   (bugpos/3)*(height/3)+(height/6)-20, 40, 40)
+    	if spot.collidepoint(click_x, click_y):
+    		print "You smashed the bug!!!, it took,", timer, "cycles"
+    else:
+    	spot = pygame.Rect(10,10,0,0)
+    return spot
+    
+    
 
 def drawBug(surface, width, height, square, board):
 	pygame.draw.circle(surface, BUG_COLOR, [(square%3)*(width/3)+(width/6),
@@ -83,3 +94,9 @@ def main():
     game.main_loop()
     
 if __name__ == "__main__":
+    main()
+
+
+
+
+
